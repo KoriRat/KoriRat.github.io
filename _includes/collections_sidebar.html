@@ -6,9 +6,9 @@
 
          {% if page.url contains item.link %}
             <ul>
-               <li><a href="{{ item.link }}">Main page</a></li>
-               <li><a href="{{ item.link }}:contents">Contents</a></li>
-               <li><a href="{{ item.link }}:about">About</a></li>
+               <li><a href="{{ item.link }}">Общее</a></li>
+               <li><a href="{{ item.link }}:contents">Контент</a></li>
+               <li><a href="{{ item.link }}:about">Легенда</a></li>
             </ul>
          {% endif %}
 
@@ -16,9 +16,9 @@
       
    {% else %}
       <ul>
-         <li><a href="/wiki">Main page</a></li>
-         <li><a href="/wiki:contents">Contents</a></li>
-         <li><a href="/about">About</a></li>
+         <li><a href="/wiki">Общее</a></li>
+         <li><a href="/wiki:contents">Контент</a></li>
+         <li><a href="/about">Легенда</a></li>
       </ul>
    {% endif %}
 
