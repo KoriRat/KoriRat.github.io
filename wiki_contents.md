@@ -3,7 +3,7 @@
    # If multi_projects is set to false you can delete the project key from the front matter.
    layout: collections
    project: wiki
-   title: Wiki contents
+   title: Вики
    permalink: /wiki:contents
 ---
 
