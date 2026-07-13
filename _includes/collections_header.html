@@ -1,0 +1,47 @@
+<section class="collections-header">
+
+   <section class="collections-stats">
+      
+      {% if site.multi_projects %}
+
+         {% for item in site.data.projects %}
+
+            {% if page.url contains item.link %}
+               Total number of {{ item.name | downcase }} entries:
+                  <strong>{{ site.[page.project].size }}</strong>
+            {% endif %}
+
+         {% endfor %}
+
+      {% else %}
+         Total number of wiki entries:
+            <strong>{{ site.wiki.size }}</strong>
+      {% endif %}
+
+   </section>
+
+
+
+   <section class="collections-search">
+
+      {% if site.multi_projects %}
+
+         {% for item in site.data.projects %}
+
+            {% if page.url contains item.link %}
+               <form action="{{ item.link }}:search" method="GET">
+                  <input required type="search" class="collections-searchbar" placeholder="Search all {{ item.name | downcase }} entries" name="q">
+               </form>
+            {% endif %}
+
+         {% endfor %}
+
+      {% else %}
+         <form action="/wiki:search" method="GET">
+            <input required type="search" class="collections-searchbar" placeholder="Search all wiki entries" name="q">
+         </form>
+      {% endif %}
+
+   </section>
+
+</section>

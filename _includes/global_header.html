@@ -1,0 +1,27 @@
+<header class="global-header">
+
+   <h1 class="global-logo">
+
+      <a href="/">
+         <img src="/assets/images/favicon.png" class="global-favicon">
+         {{ site.title | capitalize }}
+      </a>
+      
+   </h1>
+
+   <nav class="global-nav">
+
+      <!-- This logic iterates through every item in the data.portals.yml file and generates a link for each one. -->
+      {% for item in site.data.portals %}
+         <a href="{{ item.link }}" class="global-nav-link">
+            {{ item.name }}
+         </a>
+      {% endfor %}
+
+      <form class="global-search" action="/search" method="GET">
+         <input required type="search" class="global-searchbar" placeholder="Search" name="q">
+      </form>
+
+   </nav>
+
+</header>

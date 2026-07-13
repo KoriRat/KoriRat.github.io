@@ -1,0 +1,26 @@
+<script type="text/javascript">
+
+   var urls=[];
+
+   {% for doc in docs -%}
+      urls.push("{{ doc.url | absolute_url }}");
+   {% endfor -%}
+
+   var url = urls[Math.floor(Math.random()*urls.length)];
+
+   var link = document.createElement('link');
+   link.setAttribute('rel', 'canonical');
+   link.setAttribute('href', url);
+   document.head.appendChild(link);
+
+   if (typeof IE_fix != "undefined") {
+      document.write("Redirecting...");
+      var referLink = document.createElement("a");
+      referLink.href = url;
+      document.body.appendChild(referLink);
+      referLink.click();
+   } else {
+      window.location.replace(url);
+   }
+   
+</script>

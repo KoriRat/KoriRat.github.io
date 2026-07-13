@@ -1,0 +1,25 @@
+<nav class="collections-sidebar">
+
+   {% if site.multi_projects %}
+
+      {% for item in site.data.projects %}
+
+         {% if page.url contains item.link %}
+            <ul>
+               <li><a href="{{ item.link }}">Main page</a></li>
+               <li><a href="{{ item.link }}:contents">Contents</a></li>
+               <li><a href="{{ item.link }}:about">About</a></li>
+            </ul>
+         {% endif %}
+
+      {% endfor %}
+      
+   {% else %}
+      <ul>
+         <li><a href="/wiki">Main page</a></li>
+         <li><a href="/wiki:contents">Contents</a></li>
+         <li><a href="/about">About</a></li>
+      </ul>
+   {% endif %}
+
+</nav>

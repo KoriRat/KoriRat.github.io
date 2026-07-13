@@ -1,0 +1,5 @@
+# These are the links that appear in the topbar on every page.
+- name: О нас
+  link: /about
+- name: Вики
+  link: /wiki:contents/

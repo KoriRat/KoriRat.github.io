@@ -1,0 +1,24 @@
+- name: 1st Stage
+  link: wiki/stage_1/
+  icon: <i class="ri-layout-right-fill"></i> # The code for whatever RemixIcon you would like to display
+  contents: Тех, кто правит всем
+- name: 2nd Stage
+  link: wiki/stage_2/
+  icon: <i class="ri-layout-right-fill"></i> # The code for whatever RemixIcon you would like to display
+  contents: Следующие правители, которые придут на смену первым
+- name: 3rd Stage
+  link: wiki/stage_3/
+  icon: <i class="ri-layout-right-fill"></i> # The code for whatever RemixIcon you would like to display
+  contents: Слуги, которые будут служить следующим правитлям
+- name: 4th Stage
+  link: wiki/stage_4/
+  icon: <i class="ri-layout-right-fill"></i> # The code for whatever RemixIcon you would like to display
+  contents: Пасторы, помогающие сохранить порядок среди низших этажей
+- name: 5th Stage
+  link: wiki/stage_5/
+  icon: <i class="ri-layout-right-fill"></i> # The code for whatever RemixIcon you would like to display
+  contents: Простветленные, что узнали секрет этажей и служат тем, кто выше их
+- name: history
+  link: wiki/history/
+  icon: <i class="ri-layout-right-fill"></i> # The code for whatever RemixIcon you would like to display
+  contents: История этого мира

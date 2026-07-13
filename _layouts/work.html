@@ -1,0 +1,27 @@
+---
+   layout: entry
+---
+
+<article class="entry entry_work">
+
+   <h1>
+      {{ page.name | remove: ".md" }}
+   </h1>
+
+   {% if site.entry_tags_top %}
+      <section class="entry-tags entry-tags_top">
+         {% include entry_tags.html %}
+      </section>
+   {% endif %}
+
+   {{ content }}
+
+   {% if site.entry_tags_top == false %}
+      <section class="entry-tags entry-tags_bottom">
+         {% include entry_tags.html %}
+      </section>
+   {% endif %}
+
+</article>
+
+{% include wiki_sidebar.html %}

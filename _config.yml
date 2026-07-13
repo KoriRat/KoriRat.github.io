@@ -1,0 +1,100 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+#
+# If you need help with YAML syntax, here are some quick references for you:
+# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
+# https://learnxinyminutes.com/docs/yaml/
+#
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+
+title: Лунная дрожь
+email: KoriRaa@proton.me
+description: >- # this means to ignore newlines until "baseurl:"
+  Место, полное безумие, страхов и человеческих пороков. 
+  Люди здесь связаны оковами своего разума и не могут выбраться из него. 
+  Лишь некоторые способны пробится к настоящей луне.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+github_username:  KoriRat
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+skin: dark
+# Exclude from processing.
+# The following items will not be processed, by default.
+# Any item listed under the `exclude:` key here will be automatically added to
+# the internal "default list".
+#
+# Excluded items can be processed by explicitly listing the directories or
+# their entries' file path in the `include:` list.
+#
+# Display tags at the top of articles. Change to false if you want them to display
+# at the bottom instead.
+entry_tags_top: true
+
+
+
+##################################################################################
+# If you set this to true, MAKE SURE to change the collections and defaults below, otherwise the site will not behave correctly!
+##################################################################################
+multi_projects: false
+
+collections_dir: collections # specifies the location of the collections
+collections:
+   wiki:
+      output: true # creates a rendered page for each document in the collection
+      permalink: /:collection/:title # outputs /wiki/name-of-article, no file extension
+# If you want to have more than one collection and have set multi_projects to true, just uncomment the below lines, rename the collection, and create a corresponding folder in your collections folder. This folder must have a preceding underscore, as in '_wiki'. You can have as many collections as you like; make sure to both create a folder for each and make an entry for each in your projects.yml.
+#   your_collection:
+#      output: true
+#      permalink: /:collection/:title
+
+
+
+# Front matter defaults, so you don't need to set layouts on every new page.
+# As long as pages are in the correct folder, they'll automatically have the
+# correct layout. You can override this via each page's front matter.
+defaults:
+   -
+      scope:
+         path: "" # an empty string here means all files in the project
+         type: "pages" # narrows it down to only all pages, instead of posts or drafts; not particularly relevant for this theme since blogging is not featured heavily
+      values:
+         layout: "page"
+         permalink: "/:path/:basename"
+   -
+      scope:
+         path: "collections" # all pages in the collections folder
+      values:
+         layout: "entry" # the basic layout that wiki pages are built on
+   -
+      scope:
+         path: "_wiki" # all pages in the wiki folder
+      values:
+         layout: "wiki"
+
+# Exclude from processing.
+# exclude:
+#   - .sass-cache/
+#   - .jekyll-cache/
+#   - gemfiles/
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules/
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/

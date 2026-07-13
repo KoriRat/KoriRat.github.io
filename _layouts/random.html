@@ -1,0 +1,14 @@
+---
+   # Jekyll page that redirects to a random page, post or document
+   # https://github.com/jekylltools/jekyll-random-redirect
+   # v1.6
+   layout: page
+---
+
+{%- assign docs = site.documents -%}
+
+{%- if site.random_redirect.posts == true -%}
+   {%- assign docs = docs | concat: site.posts -%}
+{%- endif -%}
+
+{% include random_redirect.html %}

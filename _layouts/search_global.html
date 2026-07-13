@@ -1,0 +1,19 @@
+---
+   layout: search
+---
+
+<script>
+   window.pages = {
+      {% if site.multi_projects %}
+         {% for page in site.documents %}
+            {% include search_results.html %}
+         {% unless forloop.last %},{% endunless %}
+         {% endfor %}
+      {% else %}
+         {% for page in site.wiki %}
+            {% include search_results.html %}
+         {% unless forloop.last %},{% endunless %}
+         {% endfor %}
+      {% endif %}
+   };
+</script>
