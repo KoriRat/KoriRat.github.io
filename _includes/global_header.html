@@ -11,8 +11,8 @@
 
    <nav class="global-nav">
 
-      <!-- This logic iterates through every item in the data.portals.yml file and generates a link for each one. -->
-      {% for item in site.data.portals %}
+      <!-- This logic iterates through every item in the data.navigation.yml file and generates a link for each one. -->
+      {% for item in site.data.navigation %}
          <a href="{{ item.link }}" class="global-nav-link">
             {{ item.name }}
          </a>

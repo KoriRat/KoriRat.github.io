@@ -32,7 +32,6 @@ github_username:  KoriRat
 theme: minima
 plugins:
   - jekyll-feed
-skin: dark
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
@@ -40,7 +39,29 @@ skin: dark
 #
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
+## Minima-specific settings (applicable to Minima v3 and above only)
+# -----------------------------------------------------------------
 #
+#  *All described config keys below should be nested under the top-level
+#   `minima` key.*
+#
+# minima:
+#   Minima skin selection. Available skins are:
+#     * classic            Default, light color scheme.
+#     * dark               Dark variant of the classic skin.
+#     * auto               Adaptive skin based on the classic and dark skins.
+#     * solarized-light    Light variant of solarized color scheme.
+#     * solarized-dark     Dark variant of solarized color scheme.
+#     * solarized          Adaptive skin for solarized color scheme skins.
+#  skin: classic
+#
+# sass:
+#   quiet_deps: true
+#   silence_deprecations: [import]
+#   Specific pages for site navigation.
+#     If you wish to link only specific pages in the site-navigation, use this
+#     and list the `path` property (as represented via Liquid) of the pages in
+#     the order they should be rendered.
 # Display tags at the top of articles. Change to false if you want them to display
 # at the bottom instead.
 entry_tags_top: true
