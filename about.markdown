@@ -4,15 +4,14 @@ title: О нас
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+Приветствую, читатель! Ты добрел до той странички интернета, где можно найти полный рассказ о вселеннной Луны (ну и маленькие истории оттуда). Тебе интересен конкретный контент? Найдется и по нему страничка!
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+## Что же тут можно найти?
+- Каждый этаж с его описанием и персонажами
+- Отдельные истории, которые помогут понять игры от этой вселенной
+- Предыстория, что поможет разобраться, а как появилось оно
+- Изображения, чтобы каждый мог не только представить, но и увидеть
+- Кто знает...может загадка тут есть
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+Итак, что же тебя интересует? С радостью найдем. 
+А что если нету? Тогда можешь написать нам лично и мы с радостью ответим или дополним этот сайт. (Контакты ниже)
