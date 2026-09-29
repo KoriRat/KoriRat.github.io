@@ -18,6 +18,22 @@
   link: wiki/stage_5
   icon: <i class="ri-layout-right-fill"></i> # The code for whatever RemixIcon you would like to display
   contents: Простветленные, что узнали секрет этажей и служат тем, кто выше их
+- name: 6th Stage
+  link: wiki/stage_6
+  icon: <i class="ri-layout-right-fill"></i> # The code for whatever RemixIcon you would like to display
+  contents: Бизнес, что движет жизнь
+- name: 7th Stage
+  link: wiki/stage_7
+  icon: <i class="ri-layout-right-fill"></i> # The code for whatever RemixIcon you would like to display
+  contents: Работа
+- name: 8th Stage
+  link: wiki/stage_8
+  icon: <i class="ri-layout-right-fill"></i> # The code for whatever RemixIcon you would like to display
+  contents: Рабочий, безвольный класс
+- name: 9th Stage
+  link: wiki/stage_9
+  icon: <i class="ri-layout-right-fill"></i> # The code for whatever RemixIcon you would like to display
+  contents: Место, где безумие обретает форму.
 - name: history
   link: wiki/history
   icon: <i class="ri-layout-right-fill"></i> # The code for whatever RemixIcon you would like to display
