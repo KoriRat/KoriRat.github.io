@@ -1,104 +1,51 @@
 /***
- * Demo for this article:
- * http://blustemy.io/creating-a-table-of-contents-in-javascript/
+ * Оглавление статьи: собирается из заголовков ## и ### текста.
+ * Показывается, только если в статье хотя бы два заголовка.
+ * Основано на http://blustemy.io/creating-a-table-of-contents-in-javascript/
  */
-
-class TableOfContents {
-   /*
-      The parameters from and to must be Element objects in the DOM.
-    */
-   constructor({ from, to }) {
-      this.fromElement = from;
-      this.toElement = to;
-      // Get all the ordered headings.
-      this.headingElements = this.fromElement.querySelectorAll("h2, h3, h4, h5, h6");
-      this.tocElement = document.createElement("div");
+(function () {
+   var content = document.querySelector(".entry-content");
+   var toc = document.querySelector(".entry-toc");
+   if (!content || !toc) {
+      return;
    }
 
-   /*
-      Get the most important heading level.
-      For example if the article has only <h2>, <h3> and <h4> tags
-      this method will return 2.
-    */
-   getMostImportantHeadingLevel() {
-      let mostImportantHeadingLevel = 6; // <h6> heading level
-      for (let i = 0; i < this.headingElements.length; i++) {
-         let headingLevel = TableOfContents.getHeadingLevel(this.headingElements[i]);
-         mostImportantHeadingLevel = (headingLevel < mostImportantHeadingLevel) ?
-         headingLevel : mostImportantHeadingLevel;
-      }
-      return mostImportantHeadingLevel;
+   var headings = content.querySelectorAll("h2, h3");
+   if (headings.length < 2) {
+      return;
    }
 
-   /*
-      Generate a unique id string for the heading from its text content.
-    */
-   static generateId(headingElement) {
-      return headingElement.textContent.replace(/\s+/g, "_");
-   }
+   var title = document.createElement("p");
+   title.className = "entry-toc_title";
+   title.textContent = "Содержание";
+   toc.appendChild(title);
 
-   /*
-      Convert <h1> to 1 … <h6> to 6.
-    */
-   static getHeadingLevel(headingElement) {
-      switch (headingElement.tagName.toLowerCase()) {
-         case "h1": return 1;
-         case "h2": return 2;
-         case "h3": return 3;
-         case "h4": return 4;
-         case "h5": return 5;
-         case "h6": return 6;
-         default: return 1;
-      }
-   }
+   var list = document.createElement("ol");
+   var currentSublist = null;
 
-   generateToc() {
-      let currentLevel = this.getMostImportantHeadingLevel() - 1,
-         currentElement = this.tocElement;
-
-      for (let i = 0; i < this.headingElements.length; i++) {
-         let headingElement = this.headingElements[i],
-         headingLevel = TableOfContents.getHeadingLevel(headingElement),
-         headingLevelDifference = headingLevel - currentLevel,
-         linkElement = document.createElement("a");
-
-            if (!headingElement.id) {
-               headingElement.id = TableOfContents.generateId(headingElement);
-            }
-            linkElement.href = `#${headingElement.id}`;
-            linkElement.textContent = headingElement.textContent;
-
-            if (headingLevelDifference > 0) {
-               // Go down the DOM by adding list elements.
-               for (let j = 0; j < headingLevelDifference; j++) {
-                  let listElement = document.createElement("ol"),
-                     listItemElement = document.createElement("li");
-                     listElement.appendChild(listItemElement);
-                     currentElement.appendChild(listElement);
-                     currentElement = listItemElement;
-               }
-               currentElement.appendChild(linkElement);
-            } else {
-               // Go up the DOM.
-               for (let j = 0; j < -headingLevelDifference; j++) {
-                  currentElement = currentElement.parentNode.parentNode;
-               }
-               let listItemElement = document.createElement("li");
-               listItemElement.appendChild(linkElement);
-               currentElement.parentNode.appendChild(listItemElement);
-               currentElement = listItemElement;
-            }
-
-            currentLevel = headingLevel;
+   headings.forEach(function (heading, index) {
+      if (!heading.id) {
+         heading.id = "section-" + (index + 1);
       }
 
-      this.toElement.appendChild(this.tocElement.firstChild);
-   }
-}
+      var item = document.createElement("li");
+      var link = document.createElement("a");
+      link.href = "#" + heading.id;
+      link.textContent = heading.textContent;
+      item.appendChild(link);
 
-document.addEventListener("DOMContentLoaded", () =>
-   new TableOfContents({
-      from: document.querySelector(".entry"),
-      to: document.querySelector(".entry-index")
-   }).generateToc()
-);
+      if (heading.tagName === "H3" && list.lastElementChild) {
+         if (!currentSublist) {
+            currentSublist = document.createElement("ol");
+            list.lastElementChild.appendChild(currentSublist);
+         }
+         currentSublist.appendChild(item);
+      } else {
+         list.appendChild(item);
+         currentSublist = null;
+      }
+   });
+
+   toc.appendChild(list);
+   toc.hidden = false;
+})();

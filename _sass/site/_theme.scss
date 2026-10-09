@@ -1,0 +1,236 @@
+// Общие стили сайта: подгоняют тему minima под цвета из _data/skins.yml.
+
+:root {
+  @if lightness($background-color) < 50% {
+    color-scheme: dark;
+  } @else {
+    color-scheme: light;
+  }
+}
+
+body {
+  background-color: $background-color;
+  color: $text-color;
+}
+
+h1, h2, h3, h4, h5, h6,
+.post-title,
+.page-heading {
+  color: $heading-color;
+  font-family: $heading-font-family;
+}
+
+a {
+  color: $link-color;
+
+  &:visited {
+    color: $link-color;
+  }
+
+  &:hover {
+    color: $link-hover-color;
+  }
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid $border-color;
+  margin: $spacing-unit 0;
+}
+
+pre,
+code {
+  color: $text-color;
+  background-color: $surface-color;
+  border-color: $border-color;
+}
+
+blockquote {
+  color: $muted-color;
+  border-left-color: $accent-color;
+}
+
+table {
+  color: $text-color;
+
+  tr:nth-child(even) {
+    background-color: mix($surface-color, $background-color, 50%);
+  }
+
+  th {
+    background-color: $surface-color;
+    border-color: $border-color;
+  }
+
+  td {
+    border-color: $border-color;
+  }
+}
+
+mark {
+  color: $heading-color;
+  background-color: $mark-color;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+// Шапка
+
+.site-header {
+  border-top: 3px solid $accent-color;
+  border-bottom-color: $border-color;
+}
+
+.site-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: $heading-font-family;
+
+  &,
+  &:visited {
+    color: $heading-color;
+  }
+
+  &:hover {
+    color: $link-hover-color;
+  }
+}
+
+.site-logo {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.site-nav {
+  .page-link {
+    color: $text-color;
+
+    &:hover {
+      color: $link-hover-color;
+    }
+
+    &.is-active {
+      color: $link-color;
+    }
+  }
+
+  .menu-icon > svg {
+    fill: $heading-color;
+  }
+}
+
+// Подвал
+
+.site-footer {
+  border-top-color: $border-color;
+}
+
+.footer-heading {
+  color: $heading-color;
+}
+
+.footer-col-wrapper {
+  color: $muted-color;
+}
+
+.social-media-list {
+  li {
+    margin-bottom: 4px;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .svg-icon {
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    fill: $muted-color;
+  }
+
+  a:hover .svg-icon {
+    fill: $link-hover-color;
+  }
+}
+
+.footer-credits {
+  margin-top: $spacing-unit * 0.5;
+  font-size: $small-font-size;
+  color: $muted-color;
+}
+
+// Картинки в тексте ({% include image.html %})
+
+.figure {
+  margin: $spacing-unit auto;
+  text-align: center;
+
+  img {
+    border-radius: 6px;
+  }
+
+  &.figure_sized img {
+    width: 100%;
+  }
+
+  figcaption {
+    margin-top: 8px;
+    font-size: $small-font-size;
+    color: $muted-color;
+  }
+}
+
+.figure_left,
+.figure_right {
+  max-width: 45%;
+  margin-top: 4px;
+  margin-bottom: $spacing-unit * 0.5;
+}
+
+.figure_left {
+  float: left;
+  margin-right: $spacing-unit * 0.75;
+}
+
+.figure_right {
+  float: right;
+  margin-left: $spacing-unit * 0.75;
+}
+
+@include media-query($on-palm) {
+  .figure_left,
+  .figure_right,
+  .figure_sized {
+    float: none;
+    width: auto !important; // на телефоне картинка всегда на всю ширину
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+// Главная
+
+.home-intro {
+  font-size: 1.05rem;
+}
+
+// Страница 404
+
+.not-found {
+  margin: $spacing-unit auto;
+  max-width: 600px;
+  text-align: center;
+
+  h1 {
+    margin: $spacing-unit 0;
+    font-size: 4em;
+    line-height: 1;
+  }
+}

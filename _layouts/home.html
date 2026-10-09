@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<div class="home">
+
+   {%- if page.title %}
+   <h1 class="page-heading">{{ page.title | escape }}</h1>
+   {%- endif %}
+
+   <section class="home-intro">
+      {{ content }}
+   </section>
+
+   {% include random_articles.html count=page.random_count %}
+
+</div>

@@ -1,25 +1,8 @@
-<nav class="collections-sidebar">
-
-   {% if site.multi_projects %}
-
-      {% for item in site.data.projects %}
-
-         {% if page.url contains item.link %}
-            <ul>
-               <li><a href="{{ item.link }}">Общее</a></li>
-               <li><a href="{{ item.link }}:contents">Контент</a></li>
-               <li><a href="{{ item.link }}:about">Легенда</a></li>
-            </ul>
-         {% endif %}
-
-      {% endfor %}
-      
-   {% else %}
-      <ul>
-         <li><a href="/wiki">Общее</a></li>
-         <li><a href="/wiki:contents">Контент</a></li>
-         <li><a href="/about">Легенда</a></li>
-      </ul>
-   {% endif %}
-
+<nav class="collections-sidebar" aria-label="Разделы вики">
+   <ul>
+      <li><a href="{{ "/wiki/" | relative_url }}"{% if page.url == "/wiki/" %} class="is-active"{% endif %}>Все статьи</a></li>
+      <li><a href="{{ "/wiki/tags/" | relative_url }}"{% if page.url == "/wiki/tags/" %} class="is-active"{% endif %}>Указатель</a></li>
+      <li><a href="{{ "/wiki/history" | relative_url }}">Легенда</a></li>
+      <li><a href="{{ "/wiki/search/" | relative_url }}"{% if page.url == "/wiki/search/" %} class="is-active"{% endif %}>Поиск</a></li>
+   </ul>
 </nav>

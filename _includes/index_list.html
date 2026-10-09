@@ -1,0 +1,15 @@
+{%- comment -%} Список статей для страницы «Указатель». {%- endcomment -%}
+{%- include sort_by_date.html docs=include.docs -%}
+{%- assign docs = sorted_docs -%}
+{%- if docs.size > 0 %}
+<ul class="index-list">
+   {%- for doc in docs %}
+   <li>
+      <a href="{{ doc.url | relative_url }}">{{ doc.title | escape }}</a>
+      <span class="index-list_date">{{ doc.date | date: "%d.%m.%Y" }}</span>
+   </li>
+   {%- endfor %}
+</ul>
+{%- else %}
+<p class="index-list_empty">Пока нет статей.</p>
+{%- endif %}

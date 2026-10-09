@@ -1,0 +1,26 @@
+{%- comment -%}
+   Карточка статьи. Используется в разделе «Вики» и в блоке случайных статей на главной.
+   Берёт из статьи: title, date, portal, image (картинка сверху карточки)
+   и description (короткое описание; если его нет — начало текста статьи).
+{%- endcomment -%}
+{%- assign doc = include.doc -%}
+<a class="article-card" href="{{ doc.url | relative_url }}"{% if include.hidden %} hidden{% endif %}>
+   {%- if doc.image %}
+   <img class="article-card_image" src="{{ doc.image | relative_url }}" alt="" loading="lazy">
+   {%- endif %}
+   <span class="article-card_body">
+      <span class="article-card_meta">
+         {%- if doc.portal %}{{ doc.portal | escape }} · {% endif -%}
+         <time datetime="{{ doc.date | date_to_xmlschema }}">{{ doc.date | date: "%d.%m.%Y" }}</time>
+      </span>
+      <span class="article-card_title">{{ doc.title | escape }}</span>
+      <span class="article-card_excerpt">
+         {%- if doc.description -%}
+            {{ doc.description | escape }}
+         {%- else -%}
+            {%- assign first_paragraph = doc.content | split: "<p>" | slice: 1 | first | split: "</p>" | first -%}
+            {{ first_paragraph | default: doc.content | strip_html | normalize_whitespace | truncate: 170 }}
+         {%- endif -%}
+      </span>
+   </span>
+</a>

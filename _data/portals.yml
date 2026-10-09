@@ -1,40 +1,36 @@
-- name: 1st Stage
-  link: wiki/stage_1
-  icon: <i class="ri-layout-right-fill"></i> # The code for whatever RemixIcon you would like to display
+# Порталы — большие разделы вики. Показываются на странице «Указатель» (/wiki/tags/).
+#
+# name     — название портала. Должно В ТОЧНОСТИ совпадать с полем `portal:` у статей,
+#            которые к нему относятся (иначе статьи не попадут в портал).
+# link     — главная статья портала (адрес статьи: /wiki/имя-файла-без-.md)
+# contents — короткое описание портала
+- name: 1 этаж
+  link: /wiki/stage_1
   contents: Тех, кто правит всем
-- name: 2nd Stage
-  link: wiki/stage_2
-  icon: <i class="ri-layout-right-fill"></i> # The code for whatever RemixIcon you would like to display
+- name: 2 этаж
+  link: /wiki/stage_2
   contents: Следующие правители, которые придут на смену первым
-- name: 3rd Stage
-  link: wiki/stage_3
-  icon: <i class="ri-layout-right-fill"></i> # The code for whatever RemixIcon you would like to display
+- name: 3 этаж
+  link: /wiki/stage_3
   contents: Слуги, которые будут служить следующим правитлям
-- name: 4th Stage
-  link: wiki/stage_4
-  icon: <i class="ri-layout-right-fill"></i> # The code for whatever RemixIcon you would like to display
+- name: 4 этаж
+  link: /wiki/stage_4
   contents: Пасторы, помогающие сохранить порядок среди низших этажей
-- name: 5th Stage
-  link: wiki/stage_5
-  icon: <i class="ri-layout-right-fill"></i> # The code for whatever RemixIcon you would like to display
+- name: 5 этаж
+  link: /wiki/stage_5
   contents: Простветленные, что узнали секрет этажей и служат тем, кто выше их
-- name: 6th Stage
-  link: wiki/stage_6
-  icon: <i class="ri-layout-right-fill"></i> # The code for whatever RemixIcon you would like to display
+- name: 6 этаж
+  link: /wiki/stage_6
   contents: Бизнес, что движет жизнь
-- name: 7th Stage
-  link: wiki/stage_7
-  icon: <i class="ri-layout-right-fill"></i> # The code for whatever RemixIcon you would like to display
+- name: 7 этаж
+  link: /wiki/stage_7
   contents: Работа
-- name: 8th Stage
-  link: wiki/stage_8
-  icon: <i class="ri-layout-right-fill"></i> # The code for whatever RemixIcon you would like to display
+- name: 8 этаж
+  link: /wiki/stage_8
   contents: Рабочий, безвольный класс
-- name: 9th Stage
-  link: wiki/stage_9
-  icon: <i class="ri-layout-right-fill"></i> # The code for whatever RemixIcon you would like to display
+- name: 9 этаж
+  link: /wiki/stage_9
   contents: Место, где безумие обретает форму.
-- name: history
-  link: wiki/history
-  icon: <i class="ri-layout-right-fill"></i> # The code for whatever RemixIcon you would like to display
+- name: История
+  link: /wiki/history
   contents: История этого мира

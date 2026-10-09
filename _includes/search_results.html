@@ -1,8 +1,10 @@
-"{{ page.url | slugify }}": {
-   "title": "{{ page.title | xml_escape }}",
-   "content": {{ page.content | markdownify | strip_newlines | strip_html | jsonify }},
-   "portal": "{{ page.portal | xml_escape }}",
-   "categories": "{{ page.categories | array_to_sentence_string: "" | xml_escape }}",
-   "url": "{{ site.url | append: page.url | xml_escape }}",
-   "path": "{{ page.url | xml_escape }}"
+{%- comment -%} Одна запись поискового индекса (используется в _layouts/search.html). {%- endcomment -%}
+{%- assign doc = include.doc -%}
+{{ doc.url | jsonify }}: {
+   "title": {{ doc.title | jsonify }},
+   "content": {{ doc.content | strip_html | normalize_whitespace | jsonify }},
+   "portal": {{ doc.portal | default: "" | jsonify }},
+   "categories": {{ doc.categories | join: ", " | jsonify }},
+   "tags": {{ doc.tags | join: ", " | jsonify }},
+   "url": {{ doc.url | relative_url | jsonify }}
 }

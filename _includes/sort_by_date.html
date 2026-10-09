@@ -1,0 +1,13 @@
+{%- comment -%}
+   Сортирует статьи от новых к старым и кладёт результат в переменную sorted_docs.
+   Использование: {% include sort_by_date.html docs=site.wiki %}
+   Если у статей одинаковая дата, позже считается та, у которой имя файла «больше»
+   (stage_9 выше stage_6). Чтобы задать точный порядок, укажите в статье время:
+   date: 2026-09-29 18:30
+{%- endcomment -%}
+{%- assign sorted_docs = "" | split: "" -%}
+{%- assign date_groups = include.docs | group_by_exp: "doc", "doc.date | date: '%Y-%m-%d %H:%M:%S'" | sort: "name" | reverse -%}
+{%- for date_group in date_groups -%}
+   {%- assign group_docs = date_group.items | sort: "slug" | reverse -%}
+   {%- assign sorted_docs = sorted_docs | concat: group_docs -%}
+{%- endfor -%}

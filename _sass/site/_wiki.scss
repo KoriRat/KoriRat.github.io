@@ -1,0 +1,540 @@
+// Раздел «Вики»: боковое меню, карточки статей, страница статьи, указатель и поиск.
+
+$card-radius: 8px;
+
+// Раскладка «меню слева + содержимое»
+
+.collections {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
+  gap: $spacing-unit;
+}
+
+.collections-sidebar {
+  ul {
+    position: sticky;
+    top: $spacing-unit;
+    margin: 0;
+    list-style: none;
+  }
+
+  a {
+    display: block;
+    padding: 6px 12px;
+    color: $text-color;
+    border-left: 2px solid $border-color;
+
+    &:visited {
+      color: $text-color;
+    }
+
+    &:hover {
+      color: $link-hover-color;
+      border-left-color: $link-hover-color;
+      text-decoration: none;
+    }
+
+    &.is-active {
+      color: $link-color;
+      border-left-color: $accent-color;
+    }
+  }
+}
+
+@include media-query($on-palm) {
+  .collections {
+    grid-template-columns: minmax(0, 1fr);
+    gap: $spacing-unit * 0.5;
+  }
+
+  .collections-sidebar {
+    ul {
+      position: static;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    a {
+      padding: 4px 12px;
+      border: 1px solid $border-color;
+      border-radius: 999px;
+
+      &:hover,
+      &.is-active {
+        border-color: $accent-color;
+      }
+    }
+  }
+}
+
+// Шапка вики: счётчик статей и поиск
+
+.wiki-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: $spacing-unit * 0.75;
+}
+
+.wiki-stats {
+  margin: 0;
+  color: $muted-color;
+}
+
+.search-form {
+  display: flex;
+  flex: 1 1 260px;
+  gap: 8px;
+  max-width: 440px;
+  margin-bottom: $spacing-unit * 0.5;
+}
+
+.wiki-header .search-form {
+  margin-bottom: 0;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 12px;
+  font: inherit;
+  color: $text-color;
+  background-color: $surface-color;
+  border: 1px solid $border-color;
+  border-radius: 6px;
+
+  &:focus {
+    outline: 2px solid $accent-color;
+    outline-offset: 1px;
+  }
+}
+
+.search-button {
+  padding: 8px 16px;
+  font: inherit;
+  color: $background-color;
+  background-color: $link-color;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $link-hover-color;
+  }
+}
+
+// Карточки статей
+
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); // две колонки
+  gap: 16px;
+  margin-bottom: $spacing-unit;
+}
+
+.article-grid_small {
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+}
+
+@include media-query($on-palm) {
+  .article-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.article-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: $text-color;
+  background-color: $surface-color;
+  border: 1px solid $border-color;
+  border-radius: $card-radius;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+
+  &:visited {
+    color: $text-color;
+  }
+
+  &:hover {
+    color: $text-color;
+    text-decoration: none;
+    border-color: $accent-color;
+    transform: translateY(-2px);
+  }
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.article-card_image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.article-card_body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 16px 16px;
+}
+
+.article-card_meta {
+  font-size: $small-font-size;
+  color: $muted-color;
+}
+
+.article-card_title {
+  font-family: $heading-font-family;
+  font-size: 1.2rem;
+  line-height: 1.3;
+  color: $heading-color;
+}
+
+.article-card_excerpt {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: $small-font-size;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.article-grid_small {
+  .article-card_title {
+    font-size: 1.05rem;
+  }
+
+  .article-card_excerpt {
+    -webkit-line-clamp: 2;
+  }
+}
+
+// «Случайные статьи» на главной
+
+.random-articles {
+  margin-top: $spacing-unit * 1.5;
+  padding-top: $spacing-unit;
+  border-top: 1px solid $border-color;
+}
+
+.random-articles_header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.random-articles_shuffle {
+  padding: 4px 14px;
+  font: inherit;
+  font-size: $small-font-size;
+  color: $link-color;
+  background: none;
+  border: 1px solid $border-color;
+  border-radius: 999px;
+  cursor: pointer;
+
+  &:hover {
+    color: $link-hover-color;
+    border-color: $accent-color;
+  }
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.random-articles_more {
+  text-align: right;
+}
+
+// Страница статьи
+
+.entry-index {
+  margin-bottom: $spacing-unit * 0.75;
+  font-size: $small-font-size;
+}
+
+.entry-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: $spacing-unit;
+}
+
+.entry-layout_with-sidebar {
+  grid-template-columns: minmax(0, 1fr) 280px;
+}
+
+@include media-query($on-laptop) {
+  .entry-layout_with-sidebar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.entry-title {
+  margin-bottom: 10px;
+}
+
+.entry-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  font-size: $small-font-size;
+  color: $muted-color;
+}
+
+.entry-tags_top {
+  margin-bottom: $spacing-unit * 0.75;
+  padding-bottom: 14px;
+  border-bottom: 1px solid $border-color;
+}
+
+.entry-tags_bottom {
+  margin-top: $spacing-unit;
+  padding-top: 14px;
+  border-top: 1px solid $border-color;
+}
+
+.entry-subhead_key {
+  margin-right: 4px;
+}
+
+.entry-subhead_value {
+  display: inline-block;
+  margin: 2px 2px 2px 0;
+  padding: 0 10px;
+  border: 1px solid $border-color;
+  border-radius: 999px;
+
+  &,
+  &:visited {
+    color: $accent-color;
+  }
+
+  &:hover {
+    color: $link-hover-color;
+    border-color: $accent-color;
+    text-decoration: none;
+  }
+}
+
+.entry-toc {
+  display: inline-block;
+  min-width: 240px;
+  margin-bottom: $spacing-unit * 0.75;
+  padding: 12px 20px 12px 16px;
+  background-color: $surface-color;
+  border: 1px solid $border-color;
+  border-radius: $card-radius;
+
+  &[hidden] {
+    display: none;
+  }
+
+  ol {
+    margin: 0 0 0 20px;
+  }
+
+  ol ol {
+    margin-bottom: 0;
+    font-size: $small-font-size;
+  }
+}
+
+.entry-toc_title {
+  margin-bottom: 4px;
+  font-weight: bold;
+  color: $heading-color;
+}
+
+.entry-content {
+  h2 {
+    margin-top: $spacing-unit * 1.2;
+    padding-bottom: 4px;
+    border-bottom: 1px solid $border-color;
+  }
+
+  h2:first-child {
+    margin-top: 0;
+  }
+
+  h3 {
+    margin-top: $spacing-unit;
+  }
+
+  // Карточки персонажей: «- **Имя**» и строки «: Возраст …» под ним
+  ul:has(> li > dl) {
+    margin-left: 0;
+    list-style: none;
+  }
+
+  li > dl {
+    margin-bottom: 10px;
+    padding: 10px 14px;
+    background-color: $surface-color;
+    border-left: 3px solid $accent-color;
+    border-radius: 4px;
+
+    dt {
+      font-size: 1.1em;
+      color: $heading-color;
+    }
+
+    dd {
+      margin-left: 0;
+      color: $muted-color;
+    }
+  }
+
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// Боковая панель статьи
+
+.entry-sidebar {
+  position: sticky;
+  top: $spacing-unit;
+  align-self: start;
+  padding: 12px;
+  font-size: $small-font-size;
+  background-color: $surface-color;
+  border: 1px solid $border-color;
+  border-radius: $card-radius;
+
+  figure {
+    margin: 0 0 12px;
+  }
+
+  figcaption {
+    margin-top: 6px;
+    text-align: center;
+    color: $muted-color;
+  }
+}
+
+.entry-image {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.stats-table {
+  width: 100%;
+  margin: 0;
+  border: 0;
+
+  tr:nth-child(even) {
+    background-color: transparent;
+  }
+
+  td {
+    padding: 6px 4px;
+    border: 0;
+    border-top: 1px solid $border-color;
+  }
+
+  td:first-child {
+    width: 40%;
+    color: $muted-color;
+  }
+}
+
+.entry-quicknotes {
+  margin-top: 12px;
+}
+
+@include media-query($on-laptop) {
+  .entry-sidebar {
+    position: static;
+  }
+}
+
+// Указатель (порталы, категории, теги)
+
+.index-jump {
+  color: $muted-color;
+}
+
+.index-section {
+  margin-bottom: $spacing-unit * 1.5;
+}
+
+.index-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.index-group {
+  padding: 12px 16px;
+  background-color: $surface-color;
+  border: 1px solid $border-color;
+  border-radius: $card-radius;
+  scroll-margin-top: $spacing-unit;
+
+  &:target {
+    border-color: $accent-color;
+    box-shadow: 0 0 0 1px $accent-color;
+  }
+
+  h3 {
+    margin-bottom: 4px;
+  }
+}
+
+.index-group_description {
+  margin-bottom: 8px;
+  font-size: $small-font-size;
+  color: $muted-color;
+}
+
+.index-list {
+  margin: 0 0 0 20px;
+}
+
+.index-list_date,
+.index-list_empty {
+  font-size: $small-font-size;
+  color: $muted-color;
+}
+
+// Поиск
+
+.search-status {
+  color: $muted-color;
+}
+
+.search-results {
+  dt {
+    margin-top: $spacing-unit * 0.75;
+    font-size: 1.15rem;
+  }
+
+  dd {
+    margin: 4px 0 0;
+  }
+}
+
+.search_result-link {
+  font-family: $heading-font-family;
+}
+
+.search_result-details {
+  display: block;
+  font-size: $small-font-size;
+  color: $muted-color;
+}

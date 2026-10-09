@@ -1,38 +1,35 @@
+{%- comment -%}
+   Портал, категории, теги и дата статьи. Каждая метка ведёт на страницу
+   «Указатель» (/wiki/tags/) прямо к списку статей с такой же меткой.
+{%- endcomment -%}
+{%- assign index_url = "/wiki/tags/" | relative_url -%}
+
+{%- if page.portal %}
 <div class="entry-subhead_pair">
-
-   <span class="entry-subhead_key">Portals:</span>
-   <span>
-      <a href="/{{ page.collection }}/portal:{{ page.portal }}" class="entry-subhead_value">
-         {{ page.portal }}
-      </a>
-   </span>
-
+   <span class="entry-subhead_key">Портал:</span>
+   <a href="{{ index_url }}#portal-{{ page.portal | slugify }}" class="entry-subhead_value">{{ page.portal | escape }}</a>
 </div>
+{%- endif %}
 
+{%- if page.categories.size > 0 %}
 <div class="entry-subhead_pair">
-
-   <span class="entry-subhead_key">Categories:</span>
-   <span>
-      <!-- This logic iterates through every "category" item in the front matter and generates a link for each one. -->
-      {% for item in page.categories %}
-         <a href="/{{ page.collection }}/category:{{ item | slugify }}" class="entry-subhead_value">
-            {{ item }}
-         </a>
-      {% endfor %}
-   </span>
-
+   <span class="entry-subhead_key">Категории:</span>
+   {%- for item in page.categories %}
+   <a href="{{ index_url }}#category-{{ item | slugify }}" class="entry-subhead_value">{{ item | escape }}</a>
+   {%- endfor %}
 </div>
+{%- endif %}
+
+{%- if page.tags.size > 0 %}
+<div class="entry-subhead_pair">
+   <span class="entry-subhead_key">Теги:</span>
+   {%- for item in page.tags %}
+   <a href="{{ index_url }}#tag-{{ item | slugify }}" class="entry-subhead_value">{{ item | escape }}</a>
+   {%- endfor %}
+</div>
+{%- endif %}
 
 <div class="entry-subhead_pair">
-
-   <span class="entry-subhead_key">Tags:</span>
-   <span>
-      <!-- This logic iterates through every "tags" item in the front matter and generates a link for each one. -->
-      {% for item in page.tags %}
-         <a href="/{{ page.collection }}/tag:{{ item }}" class="entry-subhead_value">
-            {{ item }}
-         </a>
-      {% endfor %}
-   </span>
-
+   <span class="entry-subhead_key">Опубликовано:</span>
+   <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d.%m.%Y" }}</time>
 </div>

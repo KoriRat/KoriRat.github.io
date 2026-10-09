@@ -1,0 +1,73 @@
+---
+   layout: collections
+---
+{%- comment -%}
+   «Указатель»: статьи, сгруппированные по порталам, категориям и тегам.
+   Ссылки-метки в статьях ведут сюда, к нужной группе (#portal-…, #category-…, #tag-…).
+{%- endcomment -%}
+
+{{ content }}
+
+<p class="index-jump">
+   Перейти к:
+   <a href="#portals">порталам</a> ·
+   <a href="#categories">категориям</a> ·
+   <a href="#tags">тегам</a>
+</p>
+
+<section class="index-section" id="portals">
+   <h2>Порталы</h2>
+   <div class="index-groups">
+      {%- assign known_portals = site.data.portals | map: "name" %}
+      {%- for portal in site.data.portals %}
+         {%- assign docs = site.wiki | where: "portal", portal.name %}
+         <section class="index-group" id="portal-{{ portal.name | slugify }}">
+            <h3><a href="{{ portal.link | relative_url }}">{{ portal.name | escape }}</a></h3>
+            {%- if portal.contents %}
+            <p class="index-group_description">{{ portal.contents | escape }}</p>
+            {%- endif %}
+            {% include index_list.html docs=docs %}
+         </section>
+      {%- endfor %}
+
+      {%- comment -%} Порталы, которые указаны в статьях, но не описаны в _data/portals.yml {%- endcomment -%}
+      {%- assign used_portals = site.wiki | map: "portal" | compact | uniq | sort %}
+      {%- for name in used_portals %}
+         {%- unless known_portals contains name %}
+         {%- assign docs = site.wiki | where: "portal", name %}
+         <section class="index-group" id="portal-{{ name | slugify }}">
+            <h3>{{ name | escape }}</h3>
+            {% include index_list.html docs=docs %}
+         </section>
+         {%- endunless %}
+      {%- endfor %}
+   </div>
+</section>
+
+<section class="index-section" id="categories">
+   <h2>Категории</h2>
+   <div class="index-groups">
+      {%- assign categories = site.wiki | map: "categories" | join: "|" | split: "|" | uniq | sort %}
+      {%- for category in categories %}
+         {%- assign docs = site.wiki | where: "categories", category %}
+         <section class="index-group" id="category-{{ category | slugify }}">
+            <h3>{{ category | escape }}</h3>
+            {% include index_list.html docs=docs %}
+         </section>
+      {%- endfor %}
+   </div>
+</section>
+
+<section class="index-section" id="tags">
+   <h2>Теги</h2>
+   <div class="index-groups">
+      {%- assign tags = site.wiki | map: "tags" | join: "|" | split: "|" | uniq | sort %}
+      {%- for tag in tags %}
+         {%- assign docs = site.wiki | where: "tags", tag %}
+         <section class="index-group" id="tag-{{ tag | slugify }}">
+            <h3>{{ tag | escape }}</h3>
+            {% include index_list.html docs=docs %}
+         </section>
+      {%- endfor %}
+   </div>
+</section>

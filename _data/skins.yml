@@ -1,0 +1,63 @@
+# Цветовые схемы сайта.
+#
+# Какая схема включена — задаётся в _config.yml строкой `skin: <имя>`.
+#
+# Как поменять цвет: замените значение, например  link: "#339c75"  →  link: "#7aa2f7".
+#   Цвет пишется в кавычках в формате "#RRGGBB". Подобрать цвет: https://htmlcolorcodes.com/
+#
+# Как добавить свою схему: скопируйте любую схему целиком (вместе с отступами),
+#   дайте ей новое имя латиницей (например, `moonlight:`), поменяйте цвета
+#   и впишите это имя в _config.yml → skin.
+#
+# Что означает каждый цвет:
+#   background   — фон страницы
+#   surface      — фон карточек, блоков, оглавления и таблиц
+#   border       — рамки и разделительные линии
+#   text         — основной текст
+#   heading      — заголовки и название сайта
+#   muted        — второстепенный текст: даты, подписи, подвал
+#   link         — ссылки
+#   link_hover   — ссылки при наведении мыши
+#   accent       — акцент: рамка карточки при наведении, метки тегов
+#   mark         — подсветка найденных слов в поиске
+#   font         — шрифт текста (необязательно)
+#   heading_font — шрифт заголовков (необязательно)
+
+luna: # тёмная «лунная» схема
+  background: "#1c1c1f"
+  surface:    "#25252a"
+  border:     "#3a3a41"
+  text:       "#cfcdd6"
+  heading:    "#f2f1f5"
+  muted:      "#8d8b96"
+  link:       "#339c75"
+  link_hover: "#5fd1a5"
+  accent:     "#c9b8ff"
+  mark:       "#4a3f7a"
+  heading_font: 'Georgia, "Times New Roman", serif'
+
+dawn: # светлая схема
+  background: "#fdfdfd"
+  surface:    "#f3f2f7"
+  border:     "#dedce6"
+  text:       "#222126"
+  heading:    "#111014"
+  muted:      "#6f6d78"
+  link:       "#2a7a5c"
+  link_hover: "#111014"
+  accent:     "#6b4fd8"
+  mark:       "#fff1a8"
+  heading_font: 'Georgia, "Times New Roman", serif'
+
+blood: # тёмно-красная схема
+  background: "#160f10"
+  surface:    "#221718"
+  border:     "#3d2a2c"
+  text:       "#d8cccd"
+  heading:    "#f5e9ea"
+  muted:      "#957f81"
+  link:       "#e0566a"
+  link_hover: "#ff8a9a"
+  accent:     "#e0566a"
+  mark:       "#6b1f2a"
+  heading_font: 'Georgia, "Times New Roman", serif'

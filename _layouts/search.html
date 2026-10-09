@@ -1,12 +1,24 @@
 ---
-   layout: page
+   layout: collections
 ---
 
-<h1>{{ page.title }}</h1>
+{% include search_form.html autofocus=true %}
 
-   <dl id="search-results"></dl>
+<p id="search-status" class="search-status" aria-live="polite"></p>
+<dl id="search-results" class="search-results"></dl>
 
-   {{ content }}
+{{ content }}
 
-<script src="/assets/js/lunr.js"></script>
-<script src="/assets/js/search.js"></script>
+<script>
+   // Данные для поиска: все статьи вики
+   window.pages = {
+      {%- for doc in site.wiki %}
+         {% include search_results.html doc=doc %}{% unless forloop.last %},{% endunless %}
+      {%- endfor %}
+   };
+</script>
+<script src="{{ "/assets/js/lunr.js" | relative_url }}"></script>
+<script src="{{ "/assets/js/lunr.stemmer.support.js" | relative_url }}"></script>
+<script src="{{ "/assets/js/lunr.ru.js" | relative_url }}"></script>
+<script src="{{ "/assets/js/lunr.multi.js" | relative_url }}"></script>
+<script src="{{ "/assets/js/search.js" | relative_url }}"></script>

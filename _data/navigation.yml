@@ -1,5 +1,6 @@
-# These are the links that appear in the topbar on every page.
-- name: О нас
-  link: /about
+# Пункты меню в шапке сайта (справа от названия).
+# name — текст пункта, link — куда ведёт. Порядок здесь = порядок в меню.
 - name: Вики
-  link: /wiki:contents/
+  link: /wiki/
+- name: Поиск
+  link: /wiki/search/

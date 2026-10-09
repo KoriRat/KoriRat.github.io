@@ -1,0 +1,21 @@
+---
+   layout: collections
+---
+{%- comment -%}
+   Главная страница вики: все статьи карточками в две колонки,
+   от самых новых к самым первым (по полю date в шапке статьи).
+{%- endcomment -%}
+
+<section class="wiki-header">
+   <p class="wiki-stats">Всего статей: <strong>{{ site.wiki.size }}</strong></p>
+   {% include search_form.html %}
+</section>
+
+{{ content }}
+
+{% include sort_by_date.html docs=site.wiki %}
+<div class="article-grid">
+   {%- for doc in sorted_docs %}
+      {% include article_card.html doc=doc %}
+   {%- endfor %}
+</div>

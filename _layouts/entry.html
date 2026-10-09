@@ -2,18 +2,10 @@
    layout: default
 ---
 
-<nav class="entry-index">
-
-   <ul class="entry-index_return">
-      <li>
-         <a href="/{{ page.collection }}">
-            ← Return to {{ page.collection | capitalize }}
-         </a>
-      </li>
-   </ul>
-
+<nav class="entry-index" aria-label="Навигация">
+   <a class="entry-index_return" href="{{ "/wiki/" | relative_url }}">← Вернуться в Вики</a>
 </nav>
 
 {{ content }}
 
-<script src="/assets/js/toc.js"></script>
+<script src="{{ "/assets/js/toc.js" | relative_url }}"></script>

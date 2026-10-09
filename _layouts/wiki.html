@@ -2,26 +2,40 @@
    layout: entry
 ---
 
-<article class="entry entry_wiki">
+{%- assign has_sidebar = false -%}
+{%- if page.image or page.quickstats or page.quicknotes -%}
+   {%- assign has_sidebar = true -%}
+{%- endif %}
 
-   <h1>
-      {{ page.name | remove: ".md" }}
-   </h1>
+<div class="entry-layout{% if has_sidebar %} entry-layout_with-sidebar{% endif %}">
 
-   {% if site.entry_tags_top %}
-      <section class="entry-tags entry-tags_top">
-         {% include entry_tags.html %}
-      </section>
-   {% endif %}
+   <article class="entry entry_wiki">
 
-   {{ content }}
+      <header class="entry-header">
+         <h1 class="entry-title">{{ page.title | escape }}</h1>
 
-   {% if site.entry_tags_top == false %}
-      <section class="entry-tags entry-tags_bottom">
-         {% include entry_tags.html %}
-      </section>
-   {% endif %}
+         {% if site.entry_tags_top %}
+            <section class="entry-tags entry-tags_top">
+               {% include entry_tags.html %}
+            </section>
+         {% endif %}
+      </header>
 
-</article>
+      <!-- Оглавление собирается автоматически из заголовков ## и ### (assets/js/toc.js) -->
+      <nav class="entry-toc" aria-label="Содержание" hidden></nav>
 
-{% include wiki_sidebar.html %}
+      <div class="entry-content">
+         {{ content }}
+      </div>
+
+      {% unless site.entry_tags_top %}
+         <section class="entry-tags entry-tags_bottom">
+            {% include entry_tags.html %}
+         </section>
+      {% endunless %}
+
+   </article>
+
+   {% include wiki_sidebar.html %}
+
+</div>
