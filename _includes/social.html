@@ -1,23 +1,23 @@
 {%- comment -%}
-  Ссылки на соцсети. Имена пользователей задаются в _config.yml
-  (github_username, x_username, instagram_username, tiktok_username).
+  Ссылки на соцсети: на сайте видны только иконка и ник, сам ник — ссылка.
+  Ники задаются в _config.yml (github_username, x_username, instagram_username, tiktok_username).
   Иконки лежат в _includes/icons/ (Simple Icons, CC0).
 {%- endcomment -%}
 <ul class="social-media-list">
   {%- if site.github_username -%}
     {%- assign user = site.github_username | remove_first: "@" -%}
-    <li><a href="https://github.com/{{ user | cgi_escape }}" title="GitHub" rel="me">{% include icons/github.svg %}<span class="username">GitHub: {{ user | escape }}</span></a></li>
+    <li><a href="https://github.com/{{ user | cgi_escape }}" rel="me">{% include icons/github.svg %}<span class="username">{{ user | escape }}</span></a></li>
   {%- endif -%}
   {%- if site.x_username -%}
     {%- assign user = site.x_username | remove_first: "@" -%}
-    <li><a href="https://x.com/{{ user | cgi_escape }}" title="X (Twitter)" rel="me">{% include icons/x.svg %}<span class="username">X: @{{ user | escape }}</span></a></li>
+    <li><a href="https://x.com/{{ user | cgi_escape }}" rel="me">{% include icons/x.svg %}<span class="username">{{ user | escape }}</span></a></li>
   {%- endif -%}
   {%- if site.instagram_username -%}
     {%- assign user = site.instagram_username | remove_first: "@" -%}
-    <li><a href="https://www.instagram.com/{{ user | cgi_escape }}/" title="Instagram" rel="me">{% include icons/instagram.svg %}<span class="username">Instagram: @{{ user | escape }}</span></a></li>
+    <li><a href="https://www.instagram.com/{{ user | cgi_escape }}/" rel="me">{% include icons/instagram.svg %}<span class="username">{{ user | escape }}</span></a></li>
   {%- endif -%}
   {%- if site.tiktok_username -%}
     {%- assign user = site.tiktok_username | remove_first: "@" -%}
-    <li><a href="https://www.tiktok.com/@{{ user | cgi_escape }}" title="TikTok" rel="me">{% include icons/tiktok.svg %}<span class="username">TikTok: @{{ user | escape }}</span></a></li>
+    <li><a href="https://www.tiktok.com/@{{ user | cgi_escape }}" rel="me">{% include icons/tiktok.svg %}<span class="username">{{ user | escape }}</span></a></li>
   {%- endif -%}
 </ul>
