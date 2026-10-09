@@ -25,15 +25,15 @@
 
 luna: # тёмная «лунная» схема
   background: "#1e2030"
-  surface:    "#494d64"
+  surface:    "#363a4f"
   border:     "#6e738d"
-  text:       "#b7bdf8"
-  heading:    "#8bd5ca"
-  muted:      "#c6a0f6"
-  link:       "#a6da95"
-  link_hover: "#8aadf4"
-  accent:     "#ee99a0"
-  mark:       "#a6da95"
+  text:       "#cad3f5"
+  heading:    "#b7bdf8"
+  muted:      "#a5adcb"
+  link:       "#8bd5ca"
+  link_hover: "#91d7e3"
+  accent:     "#939ab7"
+  mark:       "#8aadf4"
   heading_font: 'Georgia, "Times New Roman", serif'
 
 dawn: # светлая схема
