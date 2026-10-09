@@ -24,16 +24,16 @@
 #   heading_font — шрифт заголовков (необязательно)
 
 luna: # тёмная «лунная» схема
-  background: "#1c1c1f"
-  surface:    "#25252a"
-  border:     "#3a3a41"
-  text:       "#cfcdd6"
-  heading:    "#f2f1f5"
-  muted:      "#8d8b96"
-  link:       "#339c75"
-  link_hover: "#5fd1a5"
-  accent:     "#c9b8ff"
-  mark:       "#4a3f7a"
+  background: "#1e2030"
+  surface:    "#494d64"
+  border:     "#6e738d"
+  text:       "#b7bdf8"
+  heading:    "#8bd5ca"
+  muted:      "#c6a0f6"
+  link:       "#a6da95"
+  link_hover: "#8aadf4"
+  accent:     "#ee99a0"
+  mark:       "#a6da95"
   heading_font: 'Georgia, "Times New Roman", serif'
 
 dawn: # светлая схема
